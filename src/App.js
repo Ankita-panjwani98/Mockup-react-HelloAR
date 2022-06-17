@@ -45,12 +45,9 @@ function App() {
         return false;
       });
 
-      console.log("Item present or not:", index);
-      // event.preventDefault();
       if (index !== -1) {
         openSnackbar("User already Exists", 2000);
       } else {
-       
         setDetails((prev) => {
           return [...prev, item];
         });
@@ -67,9 +64,8 @@ function App() {
   const handleDelete = (deleteItem) => {
     let newUserData = [...userDetails];
     if (newUserData.includes(deleteItem)) {
-      console.log("INSIDE Users DELETE");
       newUserData = newUserData.filter((item) => item.id !== deleteItem.id);
-      console.log("AFTER FILTER Items", newUserData);
+
       setDetails(newUserData);
       openSnackbar("User Deleted Sucessfully", 2000);
     } else {
@@ -80,7 +76,6 @@ function App() {
   useEffect(() => {
     localStorage.setItem("users", JSON.stringify(userDetails));
   }, [userDetails]);
-  console.log("User Details Object in APP: ", userDetails);
 
   return (
     <div className="App">

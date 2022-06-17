@@ -1,23 +1,25 @@
 import React, { useState } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
-import TextField from "@mui/material/TextField";
-import Dialog from "@mui/material/Dialog";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
 import { useSnackbar } from "react-simple-snackbar";
-import { makeStyles } from "@mui/styles";
 import Tooltip from "@mui/material/Tooltip";
+import DialogContainer from "../Dialog";
 import "./index.css";
 
-const useStyles = makeStyles({
-  roleSelectInput: {
-    "& .MuiFormLabel-root": {
-      color: "red", // or black
-    },
-  },
-});
+const tabsList = [
+  "Products",
+  "Demo Scripts",
+  "Customers",
+  "Sales Team",
+  "Demos",
+  "Settings",
+];
+const tabsPanelContent = [
+  "Products",
+  "Demo Scripts",
+  "Customers",
+  "Sales Team",
+  "Demos",
+];
 
 function MainSection({
   user,
@@ -28,12 +30,11 @@ function MainSection({
   userDetails,
   handleClose,
   open,
-  setOpen
+  setOpen,
 }) {
-
-  const classes = useStyles();
-  const [error, setErrors] = useState('');
+  const [error, setErrors] = useState("");
   const [openSnackbar] = useSnackbar(options);
+
   const lastSignedInOptions = [
     "Within 1 hour",
     "20 minutes ago",
@@ -41,15 +42,13 @@ function MainSection({
     "30 minutes ago",
     "2 days ago",
   ];
+
   const handleClickOpen = () => {
     setOpen(true);
   };
 
- 
-
   const handleChange = (event) => {
-    // setAge(event.target.value);
-    setErrors('');
+    setErrors("");
     const { name, value } = event.target;
     setUser((prev) => {
       return {
@@ -60,8 +59,9 @@ function MainSection({
   };
 
   const emailValidation = (emailId) => {
-    let regex = new RegExp("([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\"\(\[\]!#-[^-~ \t]|(\\[\t -~]))+\")@([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\[[\t -Z^-~]*])");
-
+    let regex = new RegExp(
+      "([!#-'*+/-9=?A-Z^-~-]+(.[!#-'*+/-9=?A-Z^-~-]+)*|\"([]!#-[^-~ \t]|(\\[\t -~]))+\")@([!#-'*+/-9=?A-Z^-~-]+(.[!#-'*+/-9=?A-Z^-~-]+)*|[[\t -Z^-~]*])"
+    );
     if (regex.test(emailId) === false) {
       return false;
     } else {
@@ -75,12 +75,12 @@ function MainSection({
     });
     const max = Math.max(...ids);
     e.preventDefault();
-  
+
     if (user.userEmailId.length === 0 && user.role.length === 0) {
       openSnackbar("Email ID and Role are required!!", 2000);
-    } else if (user.userEmailId.length != 0 && user.role.length === 0) {
+    } else if (user.userEmailId.length !== 0 && user.role.length === 0) {
       openSnackbar(" Role is required!!", 2000);
-    } else if (user.userEmailId.length === 0 && user.role.length != 0) {
+    } else if (user.userEmailId.length === 0 && user.role.length !== 0) {
       openSnackbar(" Email Id is required!!", 2000);
     } else {
       if (emailValidation(user.userEmailId)) {
@@ -97,67 +97,36 @@ function MainSection({
         setErrors("Enter Valid Email ID!!");
       }
     }
-
-    
   };
 
   const onDeleteItem = (item) => {
-    console.log("Item to be deleted:", item.id);
     onDelete(item);
   };
 
-  console.log("HANDLE CHANGE VALUES: ", user);
   return (
     <div>
       <Tabs>
         <TabList>
-          <Tab>
-            <p>Products</p>
-          </Tab>
-          <Tab>
-            <p>Demo Scripts</p>
-          </Tab>
-          <Tab>
-            <p>Customers</p>
-          </Tab>
-          <Tab>
-            <p>Sales Team</p>
-          </Tab>
-          <Tab>
-            <p>Demos</p>
-          </Tab>
-          <Tab>
-            <p>Settings</p>
-          </Tab>
+          {tabsList.map((item, index) => {
+            return (
+              <Tab key={index}>
+                <p>{item}</p>
+              </Tab>
+            );
+          })}
         </TabList>
 
-        <TabPanel>
-          <div className="panel-content">
-            <h2>Products</h2>
-          </div>
-        </TabPanel>
-        <TabPanel>
-          <div className="panel-content">
-            <h2>Demo Scripts</h2>
-          </div>
-        </TabPanel>
-        <TabPanel>
-          <div className="panel-content">
-            <h2>Customers</h2>
-          </div>
-        </TabPanel>
-        <TabPanel>
-          <div className="panel-content">
-            <h2>Sales Team</h2>
-          </div>
-        </TabPanel>
-        <TabPanel>
-          <div className="panel-content">
-            <h2>Demos</h2>
-          </div>
-        </TabPanel>
+        {tabsPanelContent.map((item, index) => {
+          return (
+            <TabPanel key={index}>
+              <div className="panel-content">
+                <h2>{item}</h2>
+              </div>
+            </TabPanel>
+          );
+        })}
 
-        {/* user details displayed in Table */}
+        {/* User details displayed in Table */}
         <TabPanel>
           <div className="main-section">
             <div className="add-user-btn" onClick={handleClickOpen}>
@@ -177,6 +146,7 @@ function MainSection({
                             src="./images/arrow-up.png"
                             height="10px"
                             width="10px"
+                            alt="up"
                           />
                         </span>
                         <span>
@@ -185,6 +155,7 @@ function MainSection({
                             src="./images/down_arrow.png"
                             height="10px"
                             width="10px"
+                            alt="down"
                           />
                         </span>
                       </span>
@@ -198,6 +169,7 @@ function MainSection({
                             src="./images/arrow-up.png"
                             height="10px"
                             width="10px"
+                            alt="up"
                           />
                         </span>
                         <span>
@@ -206,6 +178,7 @@ function MainSection({
                             src="./images/down_arrow.png"
                             height="10px"
                             width="10px"
+                            alt="down"
                           />
                         </span>
                       </span>
@@ -219,6 +192,7 @@ function MainSection({
                             src="./images/arrow-up.png"
                             height="10px"
                             width="10px"
+                            alt="up"
                           />
                         </span>
                         <span>
@@ -227,6 +201,7 @@ function MainSection({
                             src="./images/down_arrow.png"
                             height="10px"
                             width="10px"
+                            alt="down"
                           />
                         </span>
                       </span>
@@ -237,7 +212,7 @@ function MainSection({
                   {userDetails?.length > 0 ? (
                     userDetails.map((item) => {
                       let emailid = item.userEmailId;
-                      let ret = emailid.split('@')[0];
+                      let ret = emailid.split("@")[0];
                       let userName = ret.charAt(0).toUpperCase() + ret.slice(1);
                       let lastSignedIn =
                         lastSignedInOptions[
@@ -259,6 +234,7 @@ function MainSection({
                                 src="./images/delete.png"
                                 height="35"
                                 width="35"
+                                alt="delete"
                               />
                             </Tooltip>
                           </td>
@@ -289,82 +265,14 @@ function MainSection({
           </div>
         </TabPanel>
 
-        <Dialog maxWidth="md" open={open} onClose={handleClose}>
-          <div className="modal-section">
-            <div className="modal-content">
-              <div className="add-user-image-container">
-                <img src="./images/add-user.png" />
-              </div>
-              <div className="lorem-ipsum-text">
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy
-                text ever since the 1500s, when an unknown printer took a galley
-                of type and scrambled it to make a type specimen book.
-              </div>
-            </div>
-            <div className="modal-form">
-              <div className="user-information-title">User Information</div>
-
-              <div className="email-container">
-                <div className="email-role-text">Email Id of User</div>
-
-                <TextField
-                  id="outlined-basic"
-                  type="email"
-                  name="userEmailId"
-                  value={user.userEmailId}
-                  variant="outlined"
-                  className="text-inputs"
-                  onChange={handleChange}
-                  required
-                />
-                <span className="error">{error}</span>
-              </div>
-
-              <div className="email-container">
-                <div className="email-role-text">Role</div>
-                <FormControl className="text-inputs">
-                  <InputLabel id="demo-simple-select-label">Admin</InputLabel>
-                  <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    name="role"
-                    value={user.role}
-                    label="Role"
-                    className={classes.roleSelectInput}
-                    onChange={handleChange}
-                    required
-                  >
-                    <MenuItem value="Admin" default>
-                      Admin
-                    </MenuItem>
-                    <MenuItem value="Owner">Owner</MenuItem>
-                    <MenuItem value="Sales">Sales</MenuItem>
-                  </Select>
-                </FormControl>
-              </div>
-
-              <div className="actions-buttons">
-                <div></div>
-                <div className="cancel-add-buttons">
-                  <button
-                    className="add-cancel-button-style cancel-btn"
-                    onClick={handleClose}
-                  >
-                    Cancel
-                  </button>
-                  <button
-                    type="submit"
-                    className="add-cancel-button-style add-btn"
-                    onClick={handleUserDetails}
-                  >
-                    Add
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </Dialog>
+        <DialogContainer
+          handleChange={handleChange}
+          handleUserDetails={handleUserDetails}
+          user={user}
+          handleClose={handleClose}
+          open={open}
+          error={error}
+        />
       </Tabs>
     </div>
   );
