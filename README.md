@@ -3,9 +3,11 @@ npm install (Will install all dependencies)
 npm start - to run the app
 
 
-##Tech Stack:  Reactjs, localstorage
-##Styling: Material UI
-##Some third Party Libraries: react-simple-snackbar (snacbar-notification), react-tabs( Vertical Tabs)
+Tech Stack:  Reactjs, localstorage
+
+Styling: Material UI
+
+Some third Party Libraries: react-simple-snackbar (snacbar-notification), react-tabs( Vertical Tabs)
 
 
 Glimpse of the Admin Panel React App.
