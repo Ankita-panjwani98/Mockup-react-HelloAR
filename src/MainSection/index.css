@@ -1,0 +1,275 @@
+.react-tabs {
+  display: flex;
+  /* margin-left: 36px; */
+  /* width: 100%; */
+  height: 1000px;
+  /* border: 1px solid rgb(196, 25, 25); */
+  color: black;
+  background: white;
+}
+
+.react-tabs__tab-list {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  margin: 0;
+  padding: 0;
+
+  color: black;
+  border-right: 3px solid rgb(241, 230, 230);
+  background: white;
+}
+
+.react-tabs__tab {
+  height: 50px;
+  list-style: none;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  cursor: pointer;
+  /* border: 1px solid #2ac273; */
+  border: none;
+  color: black;
+}
+
+.react-tabs__tab--selected {
+  background: #2ac273;
+  /* border-left: 4px solid #6eb800; */
+  /* font-size: 18px; */
+  font-weight: 500;
+  color: black;
+}
+
+.react-tabs__tab-panel {
+  display: none;
+  width: 100%;
+  /* border: 1px solid #2ac273; */
+}
+
+.react-tabs__tab-panel--selected {
+  display: block;
+}
+
+.react-tabs__tab {
+  padding-left: 24px;
+}
+
+.react-tabs__tab--selected {
+  padding-left: 21px;
+}
+
+.panel-content {
+  text-align: center;
+}
+.add-user-btn {
+  color: white;
+  padding: 8px;
+  background-color: #2ac273;
+  width: 170px;
+  border-radius: 20px;
+  margin-top: 40px;
+  margin-left: 40px;
+  cursor: pointer;
+}
+.user-details-section {
+  margin-top: 30px;
+  margin-left: 40px;
+  height: auto;
+  width: 1100px;
+  /* border: 2px solid green; */
+}
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td,
+#customers th {
+  border: 1px solid #ddd;
+  padding: 15px;
+}
+
+#customers tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+#customers tr:hover {
+  background-color: #ddd;
+}
+
+#customers th {
+  /* padding: 15px; */
+  height: 40px;
+  background-color: #d8d8d8;
+  color: rgb(110, 104, 104);
+}
+
+.pagination-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30px;
+  margin-left: 40px;
+  width: 1000px;
+}
+.pagination-static-details {
+  display: flex;
+  flex-direction: row;
+  width: 200px;
+  height: 40px;
+  justify-content: space-around;
+  /* border: 1px solid red; */
+  font-weight: 600;
+}
+
+.first-page {
+  height: 25px;
+  width: 25px;
+  text-align: center;
+  /* padding: 10px; */
+  background-color: #2ac273;
+  color: white;
+  cursor: pointer;
+}
+.th-heading {
+  position: relative;
+}
+
+.th-heading-name {
+  position: absolute;
+  top: 25px;
+  left: 90px;
+}
+
+.order-icons {
+  position: absolute;
+  right: 25px;
+  top: 15px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  /* border: 2px solid red; */
+  cursor: pointer;
+}
+.icons-upDown {
+  height: 100%;
+  width: 100%;
+}
+
+.modal-section {
+  display: flex;
+  flex-direction: row;
+  width: 800px;
+  height: 500px;
+}
+
+.modal-content {
+  width: 45%;
+
+  background-color: #f38181;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.modal-form {
+  width: 55%;
+  background-color: rgb(241, 241, 241);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding-left: 3%;
+  /* align-items: flex-start; */
+  /* border: 2px solid green; */
+  height: 480px;
+}
+
+.add-user-image-container {
+  width: 150px;
+  height: 150px;
+}
+
+.add-user-image-container img {
+  width: 100%;
+  height: 100%;
+}
+
+.lorem-ipsum-text {
+  padding: 15px;
+  color: white;
+  text-align: center;
+  text-align: justify;
+}
+
+.user-information-title {
+  font-size: 25px;
+  font-weight: 500;
+}
+
+.email-role-text {
+  font-weight: 500;
+}
+
+.email-container {
+  height: 90px;
+  /* border: 2px solid red; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.text-inputs {
+  width: 250px;
+}
+
+.role-select-input >label{
+  font-weight: 600;
+}
+
+.delete-icon{
+  cursor: pointer;
+}
+
+.actions-buttons{
+  display: flex;
+  flex-direction: row;
+  /* margin-top: 10%; */
+  justify-content: space-between;
+  /* border: 2px solid green; */
+  width: 350px;
+}
+
+.cancel-add-buttons{
+  width: 300px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  /* border: 2px solid red; */
+}
+
+.cancel-btn{
+  background-color: #FFBB41;
+
+}
+
+.add-cancel-button-style{
+  width: 130px;
+  height: 40px;
+  border: none;
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.add-btn{
+  background-color: #57CA85;
+
+}
+
+.error{
+  color: red;
+}
